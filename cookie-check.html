@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://github.com/carhartl/jquery-cookie/raw/master/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($.cookie('showOnlyOne')) {
+                //it is still within the day
+                //hide the div
+                $('#shownOnlyOnceADay').hide();
+            } else {
+                //either cookie already expired, or user never visit the site
+                //create the cookie
+                $.cookie('showOnlyOne', 'showOnlyOne', {
+                    expires: 1
+                });
+
+                //and display the div
+                $('#shownOnlyOnceADay').show();
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div id="shownOnlyOnceADay">
+        This text should only be shown once a day!
+    </div>
+</body>
+
+</html>
